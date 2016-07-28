@@ -263,13 +263,14 @@ beam6year4 %>%
   summarize (year4_lbs = median(POUNDS))->year4median6
 
 #####
-
+library(scales)
 #graphing
 #####
-ggplot(beam108year, aes(YEAR, POUNDS)) +geom_point() + geom_smooth() +ggtitle("District 108 (lb) Harvest by year")# to get an idea of which years to use
+ggplot(beam108year, aes(YEAR, POUNDS)) +geom_point() + geom_smooth() +ggtitle("District 108 (lb) Harvest by year")+
+  scale_y_continuous(labels = comma)      # to get an idea of which years to use
 ggplot(beam106year, aes(YEAR, POUNDS)) +geom_point() + geom_smooth() +ggtitle("District 106 (lb) Harvest by year")# to get an idea of which years to use
 
-ggplot(graph2_beam106, aes(YEAR, POUNDS)) +geom_point() +geom_smooth() +geom_point(aes(YEAR,YR4_POUNDS, color=YEAR4)) +ggtitle("District 106 (lb) Harvest by year")
+ggplot(graph2_beam106, aes(YEAR, POUNDS)) +geom_point() +geom_line() +geom_smooth() +geom_point(aes(YEAR,YR4_POUNDS, color=YEAR4, size=4)) +ggtitle("District 106 (lb) Harvest by year")
 
 
 # 106
